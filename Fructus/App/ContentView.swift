@@ -34,6 +34,8 @@ struct ContentView: View {
                 SettingsView()
             })
         }
+        // Make navigatoin style for iPadOs
+        .navigationViewStyle(StackNavigationViewStyle())
         
     }
 }

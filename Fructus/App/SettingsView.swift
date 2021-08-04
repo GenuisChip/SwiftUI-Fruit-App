@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage("isOnboarding") var isOnboarding: Bool = false
     
     var body: some View {
         NavigationView{
@@ -21,7 +22,7 @@ struct SettingsView: View {
                         label: SettingsLabelView(text: "Fructus", image: "info.circle"),
                         content: {
                             Divider().padding(.vertical,2)
-                            HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10, content: {
+                            HStack(alignment: .center, spacing: 10, content: {
                                 Image("logo")
                                     .resizable()
                                     .scaledToFit()
@@ -32,7 +33,36 @@ struct SettingsView: View {
                             })
                         }
                     )
+                    
                     // Section 2
+                    
+                    GroupBox(label: SettingsLabelView(text: "Customization", image: "paintbrush"), content: {
+                        Divider().padding(.vertical,4)
+                        Text("If you wish, you can restart the application by toggle the switch in this box. That may it restarts the onboarding process and you will see the welcome screen again.")
+                            
+                            .font(.footnote)
+                            .padding(.vertical, 8)
+                            .frame(minHeight: 60)
+                            .layoutPriority(1)
+                            .multilineTextAlignment(.leading)
+                        
+                        Toggle(isOn: $isOnboarding) {
+                            if isOnboarding {
+                                Text("Restarted".uppercased())
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.green)
+                            } else {
+                                Text("Restart".uppercased())
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.secondary)
+                            }
+                        }.padding()
+                        .background(Color(UIColor.tertiarySystemBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        
+                       
+                    })
+                    
                     
                     // Section 3
                     GroupBox(label: SettingsLabelView(text: "Application", image: "apps.iphone"), content: {
@@ -51,7 +81,7 @@ struct SettingsView: View {
                 Image(systemName: "xmark")
             }))
             .padding()
-           
+            
         }
     }
 }

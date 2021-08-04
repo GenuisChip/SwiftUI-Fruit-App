@@ -10,7 +10,7 @@ import SwiftUI
 struct FruitDetailView: View {
     var fruit: Fruit
     var body: some View {
-        NavigationView{
+        NavigationView {
             ScrollView(.vertical){
                 VStack(alignment: .center, spacing: 20, content: {
                     // Header
@@ -55,7 +55,10 @@ struct FruitDetailView: View {
             // Ignore Safe Area
             .edgesIgnoringSafeArea(.top)
         }
+        // Make navigatoin style for iPadOs
+        .navigationViewStyle(StackNavigationViewStyle())
     }
+    
 }
 
 struct FruitDetailView_Previews: PreviewProvider {
