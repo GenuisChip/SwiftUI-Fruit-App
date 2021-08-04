@@ -15,6 +15,7 @@ struct SettingsView: View {
         NavigationView{
             ScrollView(.vertical){
                 VStack(spacing: 20){
+                    
                     // Section 1
                     GroupBox(
                         label: SettingsLabelView(text: "Fructus", image: "info.circle"),
@@ -34,6 +35,13 @@ struct SettingsView: View {
                     // Section 2
                     
                     // Section 3
+                    GroupBox(label: SettingsLabelView(text: "Application", image: "apps.iphone"), content: {
+                        SettingsRowView(title: "Developer", value: "Ali Hassan")
+                        SettingsRowView(title: "Designer", value: "Robert Petras")
+                        SettingsRowView(title: "Compatibility", value: "iOS 14")
+                        SettingsRowView(title: "Website",linkLabel: "linkedIn",linkDestination: "linkedin.com/ali-weka")
+                        SettingsRowView(title: "SwiftUI", value: "2.0")
+                    })
                     
                 }
             }.navigationBarTitle("Settings", displayMode:.large)
